@@ -1,4 +1,4 @@
-package countDown;
+package ex;
 
 public class game150 {
 	public static void main(String[] ar) {

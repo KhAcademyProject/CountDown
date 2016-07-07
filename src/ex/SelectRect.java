@@ -1,4 +1,4 @@
-package countDown;
+package ex;
 
 class SelectRect {
 	// 숫자및위치보관용클래스

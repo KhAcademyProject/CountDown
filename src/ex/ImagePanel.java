@@ -1,4 +1,4 @@
-package countDown;
+package ex;
 
 import java.awt.Color;
 import java.awt.Font;
