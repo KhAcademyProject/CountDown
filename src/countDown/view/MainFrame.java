@@ -3,71 +3,74 @@ package countDown.view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.event.*;
 
 public class MainFrame extends JFrame implements ActionListener{
-	private JLabel title_Lb, version_Lb, pd_Lb;
-	private JButton start_Btn, reverse_Btn;
+
+	private JButton gameStart;
+	private JButton Reverse;
 	private Font font = new Font("Default", Font.BOLD, 20);
-	
+	private JLabel title, version, pd;
 	public MainFrame(){
-		this.setTitle("1to50 GAME");
-		this.setBounds(new Rectangle(400, 100, 600, 600));
-		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+		
+		super("1 TO 50 GAME"); 	//제목
+		this.setBounds(new Rectangle(500, 300, 800, 600)); 		// 화면크기
+		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
 		this.setResizable(false);
+
+
+		Container con = this.getContentPane();
+		con.setLayout(null);
 		
-		init();
+		gameStart = new JButton("게임 시작");
+		gameStart.setBounds(300, 250, 180, 50);
+		gameStart.setFont(font);
+
+		Reverse = new JButton("Reverse mode");
+		Reverse.setBounds(300, 350, 180, 50);
+		Reverse.setFont(font);
+		
+		title = new JLabel("1 to 50");
+		title.setBounds(330, 100, 300, 50);
+		title.setFont(new Font("Default", Font.BOLD, 50));
+		
+		version = new JLabel("Ver. 1.0");
+		version.setBounds(730, 20, 300, 30);
+		version.setFont(new Font("Default", Font.BOLD, 15));
+		
+		pd = new JLabel("제작 : 신의 한수");
+		pd.setBounds(650, 500, 200, 50);
+		pd.setFont(new Font("Default", Font.PLAIN, 18));
+		
+		con.add(gameStart);
+		con.add(Reverse);
+		con.add(title);
+		con.add(version);
+		con.add(pd);
+
+		
 		start();
-		
+
 		this.setVisible(true);
 	}
 	
-	public void init(){
-		//프로그램 실행시 보이는 화면
-		Container con = this.getContentPane();
-		con.setLayout(null);
-
-		start_Btn = new JButton("Start");
-		start_Btn.setBounds(200, 400, 200, 40);
-		start_Btn.setFont(font);
-		
-		reverse_Btn = new JButton("Reverse Mode");
-		reverse_Btn.setBounds(200, 460, 200, 40);
-		reverse_Btn.setFont(font);
-			
-		title_Lb = new JLabel("1 to 50");
-		title_Lb.setBounds(220, 100, 300, 50);
-		title_Lb.setFont(new Font("Default", Font.BOLD, 50));
-		
-		version_Lb = new JLabel("Ver. 1.0");
-		version_Lb.setBounds(530, 0, 300, 30);
-		version_Lb.setFont(new Font("Default", Font.PLAIN, 15));
-		
-		pd_Lb = new JLabel("제작 : 신의 한수");
-		pd_Lb.setBounds(485, 540, 300, 30);
-		pd_Lb.setFont(new Font("Default", Font.PLAIN, 15));
-		
-		con.add(start_Btn);
-		con.add(reverse_Btn);
-		con.add(title_Lb);
-		con.add(version_Lb);
-		con.add(pd_Lb);
-	}
 	
-	public void start(){
-		//프로그램 내 실행시킬 내용
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		start_Btn.addActionListener(this);
-		reverse_Btn.addActionListener(this);
-	}
+		public void start(){
+			//프로그램 내 실행시킬 내용
+			this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+			
+			gameStart.addActionListener(this);
+			Reverse.addActionListener(this);
+		}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		switch(e.getActionCommand()){
-		case "Start":
-			System.out.println("start"); break;
-		case "Reverse Mode":
-			System.out.println("reverse");	break;			
-		}	
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			switch(e.getActionCommand()){
+			case "게임 시작":
+				System.out.println("게임을 시작합니다!"); break;
+			case "Reverse mode":
+				System.out.println("reversemode로 게임을 시작합니다!");	break;			
+			}	
+
+		}
 	}
-}
