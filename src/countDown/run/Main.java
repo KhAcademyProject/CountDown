@@ -1,11 +1,11 @@
 package countDown.run;
 
-import countDown.view.MainFrame;
+import countDown.controller.MainController;
 
 public class Main {
 	public static void main(String[] ar) {
-	//	GameFrame game = new GameFrame();
-		new MainFrame();
+		MainController main = new MainController();
+		
 	}
 }
 
