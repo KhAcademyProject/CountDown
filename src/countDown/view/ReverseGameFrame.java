@@ -5,30 +5,31 @@ import java.awt.event.*;
 import java.text.SimpleDateFormat;
 import javax.swing.*;
 import javax.swing.event.*;
+import countDown.model.service.ReverseMainService;
 
-import countDown.model.service.MainService;
+public class ReverseGameFrame extends JFrame implements MouseListener, Runnable  {
 
-
-
-public class GameFrame extends JFrame implements MouseListener, Runnable {
 
 	private JLabel time = new JLabel();
 	private JButton start = new JButton("START");
 	private JButton reset = new JButton("RESET");
 	private JButton pause = new JButton("Pause");
 	private JLabel graphic = new JLabel();
+
 	private int on = 0;
 	
+	ReverseMainService ms;
 	SimpleDateFormat time_format;
 	String show_time;
 	long start_time, current_time, actual_time;
 	boolean time_run = false;
+//	private JLabel nextn = new JLabel((int)(ms.nextnum));
+//	int nextn = ms.nextnum;
 	Thread th;
 	
-	MainService ms;
+
 	
-	
-	GameFrame() {
+	ReverseGameFrame() {
 		super("1 TO 50 GAME"); 	//제목
 		this.setBounds(new Rectangle(500, 300, 800, 700)); 		// 화면크기
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
@@ -49,8 +50,16 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 		start.setBounds(100, 550, 100, 50);
 		start.setFont(new Font("Default", Font.BOLD, 20));
 		con.add(start);
+/*		nextn.setBounds(300, 300, 50, 50);
+		nextn.setFont(new Font("Default", Font.BOLD, 20));
+		con.add(nextn);
+		*/
+/*		nextnum.setBounds(300, 300, 50, 50);
+		nextnum.setFont(new Font("Default", Font.BOLD, 20));
+		con.add(ms.nextnum);
+		*/
 		
-		ms = new MainService();
+		ms = new ReverseMainService();
 		ms.setBounds(100, 100, 410, 410);
 		con.add(ms);
 		
@@ -101,15 +110,15 @@ public void TimeCheck() {
 		// 실제시간값으로게임진행시간계산.
 		ms.countDown((int) actual_time / 1000);
 		// 카운트다운표시용시간값전송
-		if (!ms.game_start && ms.check <= 50) {
+		if (!ms.game_start && ms.check >= 1) {
 			// 게임세팅완료후게임시작되면게임진행시간갱신
 			show_time = time_format.format(actual_time - 32403000);
 			time.setText(show_time);
 		}
 	}
-	if (ms.check > 50) {
+	if (ms.check == 1) {
 		ms.ClearTime(time.getText());
-		// 숫자50까지클릭이끝나면게임클리어메세지띄울준비
+		// 숫자 1까지클릭이끝나면게임클리어메세지띄울준비
 	}
 }
 		public void mouseClicked(MouseEvent e) {

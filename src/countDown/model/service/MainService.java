@@ -79,40 +79,6 @@ public class MainService extends JPanel implements MouseListener {
 			}
 		}
 	}
-	public void reverseVersion(boolean game_start) {
-		System.out.println("reverse");
-		// 게임기본세팅
-		// 25개의사각박스와해당박스안에
-		// 랜덤으로난수를발생시켜나온숫자를받아입력한다.
-		this.game_start = game_start;
-		if (this.game_start) {
-			check = 1;
-			for (int i = 0; i < 5; ++i) {
-				for (int j = 0; j < 5; ++j) {
-					int num = 0;
-					int xx = 5 + i * 80;
-					int yy = 5 + j * 80;
-					
-					// 25개사각형좌표값들
-					num = ran_num.nextInt(25) +26 ;
-
-					for (int k = 0; k < rect_select.size(); ++k) {
-						sr = (NumLoctionContoller) rect_select.get(k);
-						if (sr.getNumber() == num) {
-							num = ran_num.nextInt(25) + 26;
-							k = -1;
-						}
-					
-					}
-					// 중복없는난수발생
-					sr = new NumLoctionContoller(xx, yy, num);
-					rect_select.add(sr);
-					// 받은좌표및난수값을객체화시켜벡터로저장
-				}
-			}
-		}
-	}
-
 	public void paint(Graphics g) {
 		g.drawRect(0, 0, 400, 400);
 		// 게임화면사각테두리
@@ -135,6 +101,7 @@ public class MainService extends JPanel implements MouseListener {
 			// 마우스로선택된사각박스를붉게표시
 		}
 		if (check > 50) {
+	//		System.out.println(check);
 			g.setColor(Color.blue);
 			g.setFont(new Font("Default", Font.BOLD, 50));
 			g.drawString("GAME CLEAR!", 40, 150);

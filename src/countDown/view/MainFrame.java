@@ -22,7 +22,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		Container con = this.getContentPane();
 		con.setLayout(null);
 		
-		gameStart = new JButton("게임 시작");
+		gameStart = new JButton("Game START");
 		gameStart.setBounds(300, 250, 180, 50);
 		gameStart.setFont(font);
 
@@ -66,10 +66,14 @@ public class MainFrame extends JFrame implements ActionListener{
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			switch(e.getActionCommand()){
-			case "게임 시작":
-				System.out.println("게임을 시작합니다!"); break;
+			case "Game START":
+				new GameFrame();
+	//			this.EXIT_ON_CLOSE; 	
+				break;
 			case "Reverse mode":
-				System.out.println("reversemode로 게임을 시작합니다!");	break;			
+				new ReverseGameFrame();
+				break;
+				//System.out.println("reversemode로 게임을 시작합니다!");	break;			
 			}	
 
 		}
