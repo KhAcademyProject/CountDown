@@ -5,6 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
 
+import countDown.model.service.RankService;
+
 public class RankFrame extends JFrame implements ActionListener{
 
 	private JButton rankUpBtn, rankViewBtn, toMainBtn, replayBtn;
@@ -12,8 +14,8 @@ public class RankFrame extends JFrame implements ActionListener{
 	private Font font = new Font("Default", Font.BOLD, 20);
 	
 	public RankFrame(){
-		this.setTitle("1to50 GAME");
-		this.setBounds(new Rectangle(400, 100, 600, 600));
+		this.setTitle("1 TO 50 GAME");
+		this.setBounds(new Rectangle(400, 100, 800, 600));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 
@@ -22,8 +24,7 @@ public class RankFrame extends JFrame implements ActionListener{
 		
 		this.setVisible(true);
 	}
-	
-	
+
 	private void rankStart() {
 		//실행
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -33,7 +34,6 @@ public class RankFrame extends JFrame implements ActionListener{
 		toMainBtn.addActionListener(this);
 		replayBtn.addActionListener(this);
 	}
-
 
 	private void rankInit() {
 		// 화면
@@ -48,11 +48,11 @@ public class RankFrame extends JFrame implements ActionListener{
 		timeLb = new JLabel("기록");
 		timeLb.setFont(font);
 		
-		rankUpBtn.setBounds(120, 320, 150, 40);
-		rankViewBtn.setBounds(300, 320, 150, 40);
-		toMainBtn.setBounds(120, 380, 150, 40);
-		replayBtn.setBounds(300, 380, 150, 40);
-		timeLb.setBounds(260, 150, 150, 40);
+		rankUpBtn.setBounds(220, 320, 150, 40);
+		rankViewBtn.setBounds(400, 320, 150, 40);
+		toMainBtn.setBounds(220, 380, 150, 40);
+		replayBtn.setBounds(400, 380, 150, 40);
+		timeLb.setBounds(360, 150, 150, 40);
 		
 		con.add(rankUpBtn);
 		con.add(rankViewBtn);
@@ -62,17 +62,26 @@ public class RankFrame extends JFrame implements ActionListener{
 		
 	}
 
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		switch(e.getActionCommand()){
 		case "랭킹에 등록":
-			System.out.println("랭킹등록");	break;
+			int result = JOptionPane.showConfirmDialog(this, "등록하시겠습니까?", "랭킹 등록", JOptionPane.OK_CANCEL_OPTION);
+			if(result == 0){
+				//랭킹등록 메소드 실행
+				new RankService().saveUserRank(null);
+				JOptionPane.showMessageDialog(this, "등록하였습니다.");
+			}
+			System.out.println(result);	break;
 		case "랭킹 보기":
-			System.out.println("랭킹보기");	break;	
+			//랭킹 보는 메소드 실행
+			new RankService().readUserRank(null);	break;	
 		case "메인으로 가기":
+			new MainFrame(this);
+			this.dispose();
 			System.out.println("메인");	break;	
 		case "다시하기":
+//			new GameFrame();
 			System.out.println("다시");	break;	
 		}	
 		
