@@ -4,7 +4,9 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import javax.swing.event.*;
+import java.util.*;
 
+import countDown.model.domain.User;
 import countDown.model.service.RankService;
 
 public class RankFrame extends JFrame implements ActionListener{
@@ -12,8 +14,12 @@ public class RankFrame extends JFrame implements ActionListener{
 	private JButton rankUpBtn, rankViewBtn, toMainBtn, replayBtn;
 	private JLabel timeLb;
 	private Font font = new Font("Default", Font.BOLD, 20);
+	private JTextArea tarea = new JTextArea();
+	private JPanel rankPane = new JPanel();
+	private MainFrame frame;
 	
 	public RankFrame(){
+//		super(frame);
 		this.setTitle("1 TO 50 GAME");
 		this.setBounds(new Rectangle(400, 100, 800, 600));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -69,16 +75,36 @@ public class RankFrame extends JFrame implements ActionListener{
 			int result = JOptionPane.showConfirmDialog(this, "등록하시겠습니까?", "랭킹 등록", JOptionPane.OK_CANCEL_OPTION);
 			if(result == 0){
 				//랭킹등록 메소드 실행
-				new RankService().saveUserRank(null);
-				JOptionPane.showMessageDialog(this, "등록하였습니다.");
+				User[] user = new User[]{new User("hong", "pass", "gil")
+						,new User("hong1", "pass1", "gil1"), new User("hong2", "pass2", "gil2")};
+				new RankService().saveUserRank(user);
+				JOptionPane.showMessageDialog(this, "등록되었습니다.");
 			}
-			System.out.println(result);	break;
-		case "랭킹 보기":
-			//랭킹 보는 메소드 실행
-			new RankService().readUserRank(null);	break;	
+			/*System.out.println(result);*/	break;
+		case "랭킹 보기": 
+			//랭킹 보는 메소드 실행 
+			Frame fs = new Frame("랭킹 확인");
+			tarea = new JTextArea(new RankService().readUserRank());
+			tarea.setEditable(false);
+			tarea.setFont(new Font("Default", Font.BOLD, 15));
+			rankPane.add(tarea);
+			fs.setBounds(200, 100, 300, 400);
+			fs.add(rankPane);
+			
+			fs.addWindowListener(new WindowAdapter(){
+				public void windowClosing(WindowEvent e){
+					fs.setVisible(false);
+					fs.dispose();
+				}
+			});
+			
+			fs.setVisible(true);
+
+			Properties prop = new Properties();
+			new RankService().readUserRank();	break;	
 		case "메인으로 가기":
-			new MainFrame(this);
-			this.dispose();
+//			new MainFrame(this);
+//			this.dispose();
 			System.out.println("메인");	break;	
 		case "다시하기":
 //			new GameFrame();
