@@ -134,7 +134,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 				if(!idField.getText().equals("") && pwField.getPassword().length !=0){
 					UserController userController = new UserController();
 					if(userController.checkMember(idField.getText(), String.valueOf(pwField.getPassword()))){
-						frame.dispose();
+						this.dispose();
 						new MainFrame();
 					}else{
 						JOptionPane.showMessageDialog(this, "아이디 또는 비밀번호가 틀립니다","알림창",JOptionPane.WARNING_MESSAGE);
