@@ -2,15 +2,18 @@ package countDown.model.domain;
 
 public class User {
 
+	private String code;
 	private	String userId;
 	private	String userPass;
 	private	String nickName;
 	private	String timeScore;
 	
+	
 	public User() {}
 
-	public User(String userId, String userPass, String nickName) {
+	public User(String code,String userId, String userPass, String nickName) {
 		super();
+		this.code = code;
 		this.userId = userId;
 		this.userPass = userPass;
 		this.nickName = nickName;
@@ -18,9 +21,17 @@ public class User {
 
 	@Override
 	public String toString() {
-		return userId + "," + userPass + "," + nickName +"," +timeScore;
+		return code +"," + userId + "," + userPass + "," + nickName +"," +timeScore;
 	}
 	
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
 	public String getUserId() {
 		return userId;
 	}
