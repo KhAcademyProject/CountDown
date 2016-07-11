@@ -43,7 +43,7 @@ public class UserController {
 	
 	
 
-	private User userInfo(String id) {
+	public User userInfo(String id) {
 		User user = (User) userListCont().get(id);
 		return user;
 	}
@@ -53,6 +53,8 @@ public class UserController {
 		HashMap<String, User> users = usersevice.getUserList();
 		return users;
 	}
+
+	
 
 		
 		
