@@ -15,28 +15,33 @@ public class UserController {
 		joinView.makeComponents();
 	}
 
+	//회원추가 
 	public boolean addMember(HashMap map) {
 		UserService usersevice = new UserService();
+		HashMap<String, User> users = userListCont();
+		String lastindex = usersevice.lastIndex(users);
 		String id = (String)map.get("id");
 		String pw = (String)map.get("pw");
 		String nickName = (String)map.get("nickName");
-		
-		HashMap<String, User> users = userListCont();
-		users.put(id,new User(id,pw,nickName));
+		users.put(lastindex,new User(lastindex,id,pw,nickName));
 		
 		return usersevice.saveUserList(users);
 	}
 	
+	//아이디 중복체크
 	public boolean checkId(String id) {
-		return userListCont().containsKey(id);   
+		UserService usersevice = new UserService();
+		return usersevice.compareId(userListCont(),id);
 	}
 
+	//로그인 아이디 패스워드 체크
 	public boolean checkMember(String id, String password) {
-//		System.out.println(id + " " + password);
+		UserService usersevice = new UserService();
 		boolean result = false;
 		if(checkId(id)){
-			result= userInfo(id).getUserId().equals(id) && 
-					userInfo(id).getUserPass().equals(password);
+			String key = usersevice.getKey(usersevice.getUserList(),id);
+			result= userInfo(key).getUserId().equals(id) && 
+					userInfo(key).getUserPass().equals(password);
 		}
 		return result;
 	}
