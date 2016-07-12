@@ -20,6 +20,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		super("1 TO 50 GAME"); 	//제목
 		this.setBounds(new Rectangle(560, 215, 800, 600)); 		// 화면크기
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
+		this.setLocationRelativeTo(null);
 		Container contentPane = getContentPane();
 		contentPane.setBackground(Color.ORANGE);
 	
