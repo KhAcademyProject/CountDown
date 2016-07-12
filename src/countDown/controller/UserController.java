@@ -32,12 +32,18 @@ public class UserController {
 	}
 
 	public boolean checkMember(String id, String password) {
-		System.out.println(id + " " + password);
-		return  userInfo(id).getUserId().equals(id) && 
-				userInfo(id).getUserPass().equals(password);
+//		System.out.println(id + " " + password);
+		boolean result = false;
+		if(checkId(id)){
+			result= userInfo(id).getUserId().equals(id) && 
+					userInfo(id).getUserPass().equals(password);
+		}
+		return result;
 	}
 	
-	private User userInfo(String id) {
+	
+
+	public User userInfo(String id) {
 		User user = (User) userListCont().get(id);
 		return user;
 	}
@@ -47,6 +53,8 @@ public class UserController {
 		HashMap<String, User> users = usersevice.getUserList();
 		return users;
 	}
+
+	
 
 		
 		

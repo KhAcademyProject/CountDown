@@ -15,7 +15,7 @@ public class UserService {
 		HashMap<String, User> users = null;
 		Properties prop = new Properties();
 		try {
-			prop.load(new FileReader("resource/user.properties"));
+			prop.load(new FileReader("src/resource/user.properties"));
 			
 			
 			if(prop.size() > 0){
@@ -48,7 +48,7 @@ public class UserService {
 		}
 		
 		try {
-			prop.store(new FileWriter("resource/user.properties"), null);
+			prop.store(new FileWriter("src/resource/user.properties"), null);
 			result = true;
 		} catch (Exception e) {
 			e.printStackTrace();

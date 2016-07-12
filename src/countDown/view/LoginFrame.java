@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.font.TextAttribute;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -16,12 +15,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import countDown.controller.UserController;
+import countDown.model.domain.User;
 
 public class LoginFrame extends JFrame implements ActionListener {
-
+	public static User userInfo;
 	private Font font = new Font("Default", Font.BOLD, 20);
 	private JLabel title, id, pw, join, pd;
 	private JTextField idField;
@@ -134,7 +133,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 				if(!idField.getText().equals("") && pwField.getPassword().length !=0){
 					UserController userController = new UserController();
 					if(userController.checkMember(idField.getText(), String.valueOf(pwField.getPassword()))){
-						frame.dispose();
+						 userInfo = userController.userInfo(idField.getText());
+						this.dispose();
 						new MainFrame();
 					}else{
 						JOptionPane.showMessageDialog(this, "아이디 또는 비밀번호가 틀립니다","알림창",JOptionPane.WARNING_MESSAGE);
