@@ -7,6 +7,7 @@ import java.util.*;
 import javax.swing.*;
 import javax.swing.event.*;
 import countDown.controller.NumLoctionContoller;
+import countDown.view.RankFrame;
 
 public class ReverseMainService extends JPanel implements MouseListener {
 
@@ -110,13 +111,16 @@ public class ReverseMainService extends JPanel implements MouseListener {
 				g.drawString("다음숫자 : "+ this.getCheck(), 430, 150);
 				g.setFont(new Font("Default", Font.BOLD, 20));
 			}
-			if (check == 0) {
-				g.setColor(Color.blue);
+			if (check < 1) {
+				String gameType = "reverse";
+				new RankFrame().rankInit(time,gameType);
+				
+				/*g.setColor(Color.blue);
 				g.setFont(new Font("Default", Font.BOLD, 50));
 				g.drawString("GAME CLEAR!", 40, 150);
 				g.setColor(Color.red);
 				g.setFont(new Font("Default", Font.BOLD, 40));
-				g.drawString("" + time, 90, 250);
+				g.drawString("" + time, 90, 250);*/
 				// 게임이클리어되면클리어화면표시
 			}
 		}

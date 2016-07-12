@@ -30,8 +30,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 	private Container con;
 	
 	public LoginFrame() {
-		super("1 TO 50 GAME"); // 제목
-		makeFrame();
+	
 	}
 	
 	public void makeFrame() {

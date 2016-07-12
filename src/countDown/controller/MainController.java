@@ -12,6 +12,7 @@ public class MainController {
 	//로그인 화면 보여주기
 	public void LoginView(){
 		LoginFrame loginView = new LoginFrame();
+		loginView.makeFrame();
 	}
 	
 	

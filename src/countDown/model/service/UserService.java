@@ -94,6 +94,12 @@ public class UserService {
 		
 		return result;
 	}
+	
+	
+	public int userSize(HashMap<String, User> users) {
+		return users.size();
+	}
+
 
 	public String getKey(HashMap<String, User> users, String id) {
 		
@@ -113,6 +119,7 @@ public class UserService {
 	
 	}
 
+	
 	
 	
 }

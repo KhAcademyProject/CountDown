@@ -106,9 +106,10 @@ public void TimeCheck() {
 			time.setText(show_time);
 		}
 	}
-	if (ms.check == 1) {
+	if (ms.check < 1) {
 		ms.ClearTime(time.getText());
 		// 숫자 1까지클릭이끝나면게임클리어메세지띄울준비
+		this.dispose();
 	}
 }
 		public void mouseClicked(MouseEvent e) {

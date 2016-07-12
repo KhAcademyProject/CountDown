@@ -59,6 +59,12 @@ public class UserController {
 		HashMap<String, User> users = usersevice.getUserList();
 		return users;
 	}
+	
+	public int userLength(){
+		UserService usersevice = new UserService();
+		int userlength =  usersevice.userSize(userListCont());
+		return userlength;
+	}
 
 	
 

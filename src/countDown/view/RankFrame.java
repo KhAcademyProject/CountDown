@@ -13,6 +13,7 @@ public class RankFrame extends JFrame implements ActionListener{
 	private Font font = new Font("Default", Font.BOLD, 20);
 	private JTextArea tarea = new JTextArea();
 	private MainFrame frame;
+	private String time, gameType;
 	
 	public RankFrame(){
 		this.setTitle("1 TO 50 GAME");
@@ -20,9 +21,6 @@ public class RankFrame extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-
-		rankInit();
-		rankStart();
 		
 		this.setVisible(true);
 	}
@@ -37,9 +35,10 @@ public class RankFrame extends JFrame implements ActionListener{
 		replayBtn.addActionListener(this);
 	}
 
-	private void rankInit() {
+	public void rankInit(String time, String gameType) {
 		// 화면
-		
+		this.time = time;
+		this.gameType = gameType;
 		Container con = this.getContentPane();
 		con.setLayout(null);
 		
@@ -47,7 +46,7 @@ public class RankFrame extends JFrame implements ActionListener{
 		rankViewBtn = new JButton("랭킹 보기");
 		toMainBtn = new JButton("메인으로 가기");
 		replayBtn = new JButton("다시하기");
-		timeLb = new JLabel("기록");
+		timeLb = new JLabel(time);
 		timeLb.setFont(font);
 		
 		rankUpBtn.setBounds(220, 320, 150, 40);
@@ -62,6 +61,7 @@ public class RankFrame extends JFrame implements ActionListener{
 		con.add(replayBtn);
 		con.add(timeLb);
 		
+		rankStart();
 	}
 
 	@Override
@@ -71,7 +71,7 @@ public class RankFrame extends JFrame implements ActionListener{
 			int result = JOptionPane.showConfirmDialog(this, "등록하시겠습니까?", "랭킹 등록", JOptionPane.OK_CANCEL_OPTION);
 			if(result == 0){
 				//랭킹등록 메소드 실행
-				new RankService().saveUserRank(new LoginFrame().userInfo);
+				new RankService().saveUserRank(new LoginFrame().userInfo, time);
 				JOptionPane.showMessageDialog(this, "등록되었습니다.");
 			}
 			/*System.out.println(result);*/	break;
@@ -101,16 +101,20 @@ public class RankFrame extends JFrame implements ActionListener{
 //			System.out.println("메인");	
 			break;	
 		case "다시하기":
-			new GameFrame();
+			System.out.println(gameType +"--------");
+			if (gameType.equals("game"))
+				new GameFrame();
+			else if (gameType.equals("reverse"))
+				new ReverseGameFrame();
 			this.dispose();
 //			System.out.println("다시");	
 			break;	
 		}	
 		
 	}
-/*	
+	
 	public static void main(String[] args){
-		new RankFrame();
-	}*/
+		new RankFrame().rankInit("1:00:00", "reverse");;
+	}
 
 }

@@ -122,7 +122,8 @@ public class MainService extends JPanel implements MouseListener {
 		
 		}
 		if (check > 50) {
-			new RankFrame();
+			String gameType = "game";
+			new RankFrame().rankInit(time,gameType);
 			
 			/*g.setColor(Color.blue);
 			g.setFont(new Font("Default", Font.BOLD, 50));
