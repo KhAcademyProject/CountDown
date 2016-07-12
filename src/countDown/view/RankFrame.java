@@ -3,10 +3,7 @@ package countDown.view;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.*;
-import java.util.*;
 
-import countDown.model.domain.User;
 import countDown.model.service.RankService;
 
 public class RankFrame extends JFrame implements ActionListener{
@@ -15,15 +12,14 @@ public class RankFrame extends JFrame implements ActionListener{
 	private JLabel timeLb;
 	private Font font = new Font("Default", Font.BOLD, 20);
 	private JTextArea tarea = new JTextArea();
-	private JPanel rankPane = new JPanel();
 	private MainFrame frame;
 	
 	public RankFrame(){
-//		super(frame);
 		this.setTitle("1 TO 50 GAME");
 		this.setBounds(new Rectangle(400, 100, 800, 600));
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 
 		rankInit();
 		rankStart();
@@ -82,15 +78,13 @@ public class RankFrame extends JFrame implements ActionListener{
 		case "랭킹 보기": 
 			//랭킹 보는 메소드 실행 
 			Frame fs = new Frame("랭킹 확인");
+			System.out.println();
 			
 			tarea.setText((new RankService().readUserRank()));
 			tarea.setEditable(false);
 			tarea.setFont(new Font("Default", Font.BOLD, 15));
 			fs.add(tarea, new BorderLayout().CENTER);
-//			rankPane.add(tarea);
-			fs.setBounds(200, 100, 300, 400);
-//			fs.add(rankPane);
-			
+			fs.setBounds(200, 100, 300, 400);	
 			fs.addWindowListener(new WindowAdapter(){
 				public void windowClosing(WindowEvent e){
 					fs.setVisible(false);
@@ -99,8 +93,6 @@ public class RankFrame extends JFrame implements ActionListener{
 			});
 			
 			fs.setVisible(true);
-
-//			Properties prop = new Properties();
 			new RankService().readUserRank();	
 			break;	
 		case "메인으로 가기":
@@ -116,14 +108,9 @@ public class RankFrame extends JFrame implements ActionListener{
 		}	
 		
 	}
-	
-/*	public String showRank(String userRank){
-//		tarea.setText(userRank.toString());
-		return userRank.toString();
-	}*/
-	
+/*	
 	public static void main(String[] args){
 		new RankFrame();
-	}
+	}*/
 
 }

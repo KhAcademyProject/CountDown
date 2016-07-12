@@ -27,6 +27,7 @@ public class ReverseGameFrame extends JFrame implements MouseListener, Runnable 
 		this.setBounds(new Rectangle(500, 300, 800, 600)); 		// 화면크기
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
 		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 		
 		Container con = this.getContentPane();
 		con.setLayout(null);

@@ -31,6 +31,7 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 		this.setBounds(new Rectangle(500, 300, 800, 600)); 		// 화면크기
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
 		this.setResizable(false);
+		this.setLocationRelativeTo(null);
 
 		Container con = this.getContentPane();
 		con.setLayout(null);
@@ -110,6 +111,7 @@ public void TimeCheck() {
 	}
 	if (ms.check > 50) {
 		ms.ClearTime(time.getText());
+		this.dispose();
 //		System.out.println(time.getText());
 		// 숫자50까지클릭이끝나면게임클리어메세지띄울준비
 	}

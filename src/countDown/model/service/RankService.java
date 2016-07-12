@@ -10,10 +10,9 @@ public class RankService {
 	private User[] ur;
 	//랭킹에 등록// prop에 저장  user의 정보저장
 	public void saveUserRank(User user){
-		Properties prop = new Properties();
-	
+			Properties prop = new Properties();
 			String key = user.getCode();
-			String value = user.getUserId() + " : " + user.getNickName()+ ", 걸린 시간 : " + user.getTimeScore();	
+			String value = user.getUserId() + user.getNickName() + user.getTimeScore();	
 
 			prop.setProperty(key, value);
 
@@ -31,8 +30,7 @@ public class RankService {
 	public String readUserRank(){
 		Properties prop = new Properties();
 		StringBuilder sb = new StringBuilder();
-		ArrayList<Object> list = new ArrayList<Object>();
-		
+		ArrayList<Object> list = new ArrayList<Object>();	
 		String value = null;
 
 		try {
@@ -52,18 +50,12 @@ public class RankService {
 			value = prop.getProperty(key);
 			String[] values = value.split(",");
 			sr[i]= new User(values[0],values[1],values[2]);
-			list.add(sr[i]);
-			
+			list.add(sr[i]);	
 		}
-	
 		list.sort(new AscRank());
-	
 		for (int j = 0; j < sr.length; j++) {
-			sb.append(list.get(j)+ "\n");
+			sb.append( j+1 + "등 : " + list.get(j)+ "\n");
 		}
-		
-		
 		return new String(sb);
-		
 	}
 }

@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import countDown.controller.NumLoctionContoller;
 import countDown.view.GameFrame;
+import countDown.view.RankFrame;
 
 public class MainService extends JPanel implements MouseListener {
 	// 실제게임화면을표시할패널
@@ -121,12 +122,14 @@ public class MainService extends JPanel implements MouseListener {
 		
 		}
 		if (check > 50) {
-			g.setColor(Color.blue);
+			new RankFrame();
+			
+			/*g.setColor(Color.blue);
 			g.setFont(new Font("Default", Font.BOLD, 50));
 			g.drawString("GAME CLEAR!", 40, 150);
 			g.setColor(Color.red);
 			g.setFont(new Font("Default", Font.BOLD, 40));
-			g.drawString("" + time, 90, 250);
+			g.drawString("" + time, 90, 250);*/
 			// 게임이클리어되면클리어화면표시
 		}
 
