@@ -36,12 +36,17 @@ public class ReverseGameFrame extends JFrame implements MouseListener, Runnable 
 		// 프레임에표시할텍스트라벨
 		pause.setBounds(510, 320, 150, 50);
 		pause.setFont(new Font("Default", Font.BOLD, 25));
+		pause.setBackground(new Color(204,204,255));
 		con.add(pause);
+		
 		reset.setBounds(510, 380, 150, 50);
 		reset.setFont(new Font("Default", Font.BOLD, 25));
+		reset.setBackground(new Color(0,153,51));
 		con.add(reset);
+		
 		start.setBounds(510, 260, 150, 50);
 		start.setFont(new Font("Default", Font.BOLD, 25));
+		start.setBackground(new Color(255,155,000));
 		con.add(start);
 		
 		//게임화면 크기
