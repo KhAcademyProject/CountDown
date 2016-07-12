@@ -39,9 +39,8 @@ public class UserController {
 		UserService usersevice = new UserService();
 		boolean result = false;
 		if(checkId(id)){
-			String key = usersevice.getKey(usersevice.getUserList(),id);
-			result= userInfo(key).getUserId().equals(id) && 
-					userInfo(key).getUserPass().equals(password);
+			result= userInfo(id).getUserId().equals(id) && 
+					userInfo(id).getUserPass().equals(password);
 		}
 		return result;
 	}

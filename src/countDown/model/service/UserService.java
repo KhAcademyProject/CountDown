@@ -87,7 +87,6 @@ public class UserService {
 		for(int i =0; it.hasNext(); i++){
 			String key = (String) it.next();
 			User value = users.get(key);
-			System.out.println(value);
 			if(value.getUserId().equals(id)){
 				result = true;
 			}
