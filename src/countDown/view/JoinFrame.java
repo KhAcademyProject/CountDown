@@ -2,25 +2,29 @@ package countDown.view;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.HashMap;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.LineBorder;
 
 import countDown.controller.UserController;
 
 public class JoinFrame extends JFrame implements ActionListener {
 
 	private Font font = new Font("Default", Font.BOLD, 20);
-	private JLabel title, id, pw, join, nickName, pd;
+	private JLabel title, id, pw, join, nickName, pd, imgBox, imgBox2, imgBox3, version;
 	private JTextField idField, nickField;
 	private JPasswordField pwField;
 	private JButton joinBtn, cancelBtn, checkBtn ;
@@ -29,6 +33,7 @@ public class JoinFrame extends JFrame implements ActionListener {
 	private UserController userController;
 	private boolean btnChk =false;
 	boolean idChk = true;
+	private ImageIcon image,img,img2,img3;
 	public JoinFrame() {}
 	
 	public void makeComponents() {
@@ -55,23 +60,41 @@ public class JoinFrame extends JFrame implements ActionListener {
 		con.add(cancelBtn);
 		con.add(checkBtn);
 		con.add(pd);
-		
+		con.add(imgBox);
+		con.add(imgBox2);
+		con.add(version);
+//		con.add(imgBox3);
 		
 		frame.setVisible(true);
 		start();
 	}
 
 	private void contentLocation() {
-		title = new JLabel("1 to 50");
-		title.setBounds(260, 60, 300, 100);
-		title.setFont(new Font("Default", Font.BOLD, 80));
+		con.setBackground(Color.WHITE);
+		
+		
+		img = new ImageIcon("src/images/15-4.gif");
+		imgBox = new JLabel(img);
+		imgBox.setBounds(650, 350, img.getIconWidth(), img.getIconHeight());
+		
+		img2 = new ImageIcon("src/images/lion.gif");
+		imgBox2 = new JLabel(img2);
+		imgBox2.setBounds(350, 20, img2.getIconWidth(), img2.getIconHeight());
+		
+//		img3 = new ImageIcon("src/images/lion2.gif");
+//		imgBox3 = new JLabel(img3);
+//		imgBox3.setBounds(0, 420, img3.getIconWidth(), img3.getIconHeight());
 
+		version = new JLabel("Ver. 1.0");
+		version.setBounds(730, 0, 300, 30);
+		version.setFont(new Font("Default", Font.BOLD, 15));
+		
 		id = new JLabel("ID");
-		id.setBounds(180, 200, 100, 60);
+		id.setBounds(200, 220, 100, 60);
 		id.setFont(new Font("Default", Font.BOLD, 25));
-
+		
 		idField = new JTextField();
-		idField.setBounds(id.getBounds().x+60, id.getBounds().y+15, 360, 40);
+		idField.setBounds(id.getBounds().x+50, id.getBounds().y+15, 300, 40);
 		idField.setFont(new Font("Default", Font.BOLD, 25));
 
 		pw = new JLabel("PW");
@@ -79,7 +102,7 @@ public class JoinFrame extends JFrame implements ActionListener {
 		pw.setFont(new Font("Default", Font.BOLD, 25));
 
 		pwField = new JPasswordField();
-		pwField.setBounds(idField.getBounds().x, pw.getBounds().y+15, idField.getBounds().width, 40);
+		pwField.setBounds(idField.getBounds().x, pw.getBounds().y+15, idField.getBounds().width+40, 40);
 		pwField.setFont(new Font("Default", Font.BOLD, 25));
 		
 		nickName = new JLabel("NickName");
@@ -87,28 +110,41 @@ public class JoinFrame extends JFrame implements ActionListener {
 		nickName.setFont(new Font("Default", Font.BOLD, 25));
 		
 		nickField= new JTextField();
-		nickField.setBounds(pwField.getBounds().x, nickName.getBounds().y+15, idField.getBounds().width, 40);
+		nickField.setBounds(pwField.getBounds().x, nickName.getBounds().y+15, pwField.getBounds().width, 40);
 		nickField.setFont(new Font("Default", Font.BOLD, 25));
 
-		joinBtn = new JButton("가입");
-		joinBtn.setBounds(nickField.getBounds().x+20, nickField.getBounds().y+100, 120, 40);
+		joinBtn = new JButton("Sign Up");
+		joinBtn.setBounds(nickField.getBounds().x, nickField.getBounds().y+nickField.getBounds().height+20, 
+				nickField.getBounds().width/3, 40);
 		joinBtn.setFont(new Font("Default", Font.BOLD, 20));
-		joinBtn.setBackground(Color.WHITE);
+		joinBtn.setForeground(Color.WHITE);
+		joinBtn.setBackground( new Color(000, 000, 255));;
+		joinBtn.setBorder(new LineBorder(new Color(000, 000, 255)));
 		
-		cancelBtn = new JButton("취소");
-		cancelBtn.setBounds(joinBtn.getBounds().x+210, joinBtn.getBounds().y, 120, 40);
+		cancelBtn = new JButton("Back");
+		cancelBtn.setBounds(joinBtn.getBounds().x+joinBtn.getBounds().width*2, joinBtn.getBounds().y, 
+							nickField.getBounds().width/3, 40);
 		cancelBtn.setFont(new Font("Default", Font.BOLD, 20));
-		cancelBtn.setBackground(Color.WHITE);
-
-		checkBtn = new JButton("중복체크");
-		checkBtn.setBounds(idField.getBounds().x+idField.getBounds().width+20, 
-							idField.getBounds().y, 90, 40);
-		checkBtn.setFont(new Font("Default", Font.BOLD, 12));
+		cancelBtn.setForeground(Color.WHITE);
+		cancelBtn.setBackground(new Color(204,204,204));
+		cancelBtn.setBorder(new LineBorder(new Color(204,204,204)));
+		
+		checkBtn = new JButton(new ImageIcon("src/images/check.gif"));
+		checkBtn.setBounds(idField.getBounds().x+idField.getBounds().width-2, 
+							idField.getBounds().y, 40, 39);
 		checkBtn.setBackground(Color.WHITE);
+		
 
-		pd = new JLabel("제작 : 신의 한수");
-		pd.setBounds(670, 520, 200, 50);
+		pd = new JLabel("신의 한수");
+		pd.setBounds(725, 520, 200, 50);
 		pd.setFont(new Font("Default", Font.BOLD, 15));
+		
+		title = new JLabel("1 to 50",SwingConstants.CENTER);
+		title.setBounds(idField.getBounds().x,
+				idField.getBounds().y-idField.getBounds().height-90,
+				idField.getBounds().width,90);
+		title.setFont(new Font("Century Gothic", Font.BOLD, 90));
+		title.setForeground(new Color(255,102,051));
 		
 	}
 
@@ -122,18 +158,18 @@ public class JoinFrame extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		HashMap<String, String> map = new HashMap();
 		map.put("id", idField.getText());
 		map.put("pw", String.valueOf(pwField.getPassword()));
 		map.put("nickName",nickField.getText());
-		
+		  //(클래스)e.getSource(); 해당 객체의 정보를 넘긴다.
+       
 		switch(e.getActionCommand()){
-			case "취소":	
+			case "Back":	
 				frame.dispose();	
-				new LoginFrame();
+				new LoginFrame().makeFrame();
 			break;
-			case "중복체크":
+			case "":
 				idChk = userController.checkId(idField.getText());
 				
 				if(!idField.getText().equals("")){
@@ -149,7 +185,7 @@ public class JoinFrame extends JFrame implements ActionListener {
 				
 				break;
 				
-			case "가입":
+			case "Sign Up":
 				if(!idField.getText().equals("") &&
 					!pwField.getPassword().equals("") &&
 					!nickField.getText().equals(""))	{
