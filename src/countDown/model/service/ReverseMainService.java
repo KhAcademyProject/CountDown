@@ -15,7 +15,6 @@ public class ReverseMainService extends JPanel implements MouseListener {
 		int x, y; // 좌표값
 		
 		public int check = 50; // 숫자체크용
-		public int nextnum = check;
 		String time;// 클리어시간값표시용
 		public boolean game_start = false;
 		Random ran_num = new Random();
@@ -27,6 +26,14 @@ public class ReverseMainService extends JPanel implements MouseListener {
 		// 숫자보관용객체클래스접근키
 		public ReverseMainService() {
 			this.addMouseListener(this);
+		}
+		
+		public int getCheck() {
+			return check;	
+		}
+
+		public void setCheck(int check) {
+			this.check = check;
 		}
 
 		public void countDown(int count) {
@@ -79,7 +86,7 @@ public class ReverseMainService extends JPanel implements MouseListener {
 			}
 		}
 		public void paint(Graphics g) {
-			g.drawRect(0, 0, 400, 400);
+			g.drawRect(0, 0, 630, 399);
 			// 게임화면사각테두리
 			if (game_start) {
 				// 카운트다운텍스트그리기
@@ -98,6 +105,10 @@ public class ReverseMainService extends JPanel implements MouseListener {
 				g.setColor(Color.red);
 				g.drawRect(x * 80 + 5, y * 80 + 5, 70, 70);
 				// 마우스로선택된사각박스를붉게표시
+				
+				g.setColor(Color.black);
+				g.drawString("다음숫자 : "+ this.getCheck(), 430, 150);
+				g.setFont(new Font("Default", Font.BOLD, 20));
 			}
 			if (check == 0) {
 				g.setColor(Color.blue);
@@ -127,6 +138,7 @@ public class ReverseMainService extends JPanel implements MouseListener {
 						int xx = sr.getX();
 						int yy = sr.getY();
 						if (sr.getNumber() - check == 0) {
+							
 							check--;
 							rect_select.remove(i);
 							// 50-1 숫자순서대로클릭되면해당하는숫자제거

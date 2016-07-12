@@ -11,12 +11,13 @@ import java.util.Vector;
 import javax.swing.JPanel;
 
 import countDown.controller.NumLoctionContoller;
+import countDown.view.GameFrame;
 
 public class MainService extends JPanel implements MouseListener {
 	// 실제게임화면을표시할패널
 	int count = 3;// 카운트다운표시용
 	int x, y; // 좌표값
-	public int check; // 숫자체크용
+	public int check = 1; // 숫자체크용
 	String time;// 클리어시간값표시용
 	public boolean game_start = false;
 	Random ran_num = new Random();
@@ -24,10 +25,19 @@ public class MainService extends JPanel implements MouseListener {
 	public Vector rect_select = new Vector();
 	// 1-50 숫자보관용벡터
 	NumLoctionContoller sr;
-
 	// 숫자보관용객체클래스접근키
+	
+	
 	public MainService() {
 		this.addMouseListener(this);
+	}
+
+	public int getCheck() {
+		return check;	
+	}
+
+	public void setCheck(int check) {
+		this.check = check;
 	}
 
 	public void countDown(int count) {
@@ -55,7 +65,6 @@ public class MainService extends JPanel implements MouseListener {
 		// 랜덤으로난수를발생시켜나온숫자를받아입력한다.
 		this.game_start = game_start;
 		if (this.game_start) {
-			check = 1;
 			for (int i = 0; i < 5; ++i) {
 				for (int j = 0; j < 5; ++j) {
 					int num = 0;
@@ -80,7 +89,7 @@ public class MainService extends JPanel implements MouseListener {
 		}
 	}
 	public void paint(Graphics g) {
-		g.drawRect(0, 0, 400, 400);
+		g.drawRect(0, 0, 630, 399);
 		// 게임화면사각테두리
 		if (game_start) {
 			// 카운트다운텍스트그리기
@@ -88,6 +97,8 @@ public class MainService extends JPanel implements MouseListener {
 			g.drawString("CountDown", 70, 150);
 			g.setFont(new Font("Default", Font.BOLD, 100));
 			g.drawString("" + count, 170, 250);
+
+			
 		} else if (!game_start && count == 0) {
 			for (int i = 0; i < rect_select.size(); ++i) {
 				sr = (NumLoctionContoller) rect_select.get(i);
@@ -95,13 +106,21 @@ public class MainService extends JPanel implements MouseListener {
 				g.setFont(new Font("Default", Font.BOLD, 30));
 				g.drawString("" + sr.getNumber(), sr.getX() + 22, sr.getY() + 45);
 				// 벡터에저장된각각의숫자값을받아사각형과숫자그리기
+
+				
+				
 			}
+
 			g.setColor(Color.red);
 			g.drawRect(x * 80 + 5, y * 80 + 5, 70, 70);
 			// 마우스로선택된사각박스를붉게표시
+			
+			g.setColor(Color.black);
+			g.drawString("다음숫자 : "+ this.getCheck(), 430, 150);
+			g.setFont(new Font("Default", Font.BOLD, 20));
+		
 		}
 		if (check > 50) {
-	//		System.out.println(check);
 			g.setColor(Color.blue);
 			g.setFont(new Font("Default", Font.BOLD, 50));
 			g.drawString("GAME CLEAR!", 40, 150);
@@ -110,6 +129,7 @@ public class MainService extends JPanel implements MouseListener {
 			g.drawString("" + time, 90, 250);
 			// 게임이클리어되면클리어화면표시
 		}
+
 	}
 
 	public void ClearTime(String time) {
@@ -147,13 +167,14 @@ public class MainService extends JPanel implements MouseListener {
 							// 제거된숫자가있으면그자리에
 							// 다시난수를발생시켜숫자를추가
 						}
+						
 					}
 				}
 			}
 		}
 	}
-
 	public void mouseReleased(MouseEvent e) {
+
 	}
 
 	public void mouseEntered(MouseEvent e) {
@@ -161,4 +182,6 @@ public class MainService extends JPanel implements MouseListener {
 
 	public void mouseExited(MouseEvent e) {
 	}
+
+	
 }
