@@ -49,7 +49,9 @@ public class UserController {
 	
 
 	public User userInfo(String id) {
-		User user = (User) userListCont().get(id);
+		UserService usersevice = new UserService();
+		String key = usersevice.getKey(usersevice.getUserList(),id);
+		User user = (User) userListCont().get(key);
 		return user;
 	}
 	
