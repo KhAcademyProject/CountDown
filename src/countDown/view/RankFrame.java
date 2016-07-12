@@ -75,21 +75,21 @@ public class RankFrame extends JFrame implements ActionListener{
 			int result = JOptionPane.showConfirmDialog(this, "등록하시겠습니까?", "랭킹 등록", JOptionPane.OK_CANCEL_OPTION);
 			if(result == 0){
 				//랭킹등록 메소드 실행
-				User[] user = new User[]{new User("hong", "pass", "gil")
-						,new User("hong1", "pass1", "gil1"), new User("hong2", "pass2", "gil2")};
-				new RankService().saveUserRank(user);
+				new RankService().saveUserRank(new LoginFrame().userInfo);
 				JOptionPane.showMessageDialog(this, "등록되었습니다.");
 			}
 			/*System.out.println(result);*/	break;
 		case "랭킹 보기": 
 			//랭킹 보는 메소드 실행 
 			Frame fs = new Frame("랭킹 확인");
-			tarea = new JTextArea(new RankService().readUserRank());
+			
+			tarea.setText((new RankService().readUserRank()));
 			tarea.setEditable(false);
 			tarea.setFont(new Font("Default", Font.BOLD, 15));
-			rankPane.add(tarea);
+			fs.add(tarea, new BorderLayout().CENTER);
+//			rankPane.add(tarea);
 			fs.setBounds(200, 100, 300, 400);
-			fs.add(rankPane);
+//			fs.add(rankPane);
 			
 			fs.addWindowListener(new WindowAdapter(){
 				public void windowClosing(WindowEvent e){
@@ -100,18 +100,27 @@ public class RankFrame extends JFrame implements ActionListener{
 			
 			fs.setVisible(true);
 
-			Properties prop = new Properties();
-			new RankService().readUserRank();	break;	
+//			Properties prop = new Properties();
+			new RankService().readUserRank();	
+			break;	
 		case "메인으로 가기":
-//			new MainFrame(this);
-//			this.dispose();
-			System.out.println("메인");	break;	
+			new MainFrame();
+			this.dispose();
+//			System.out.println("메인");	
+			break;	
 		case "다시하기":
-//			new GameFrame();
-			System.out.println("다시");	break;	
+			new GameFrame();
+			this.dispose();
+//			System.out.println("다시");	
+			break;	
 		}	
 		
 	}
+	
+/*	public String showRank(String userRank){
+//		tarea.setText(userRank.toString());
+		return userRank.toString();
+	}*/
 	
 	public static void main(String[] args){
 		new RankFrame();

@@ -19,6 +19,14 @@ public class User {
 		this.nickName = nickName;
 	}
 
+
+	public User(String userId, String nickName, String timeScore) {
+		super();
+		this.userId = userId;
+		this.nickName = nickName;
+		this.timeScore = timeScore;
+	}
+
 	@Override
 	public String toString() {
 		return code +"," + userId + "," + userPass + "," + nickName +"," +timeScore;
