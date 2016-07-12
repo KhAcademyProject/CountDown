@@ -18,7 +18,7 @@ public class MainFrame extends JFrame implements ActionListener{
 	
 	public MainFrame(){
 		super("1 TO 50 GAME"); 	//제목
-		this.setBounds(new Rectangle(500, 300, 800, 600)); 		// 화면크기
+		this.setBounds(new Rectangle(560, 215, 800, 600)); 		// 화면크기
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
 		Container contentPane = getContentPane();
 		contentPane.setBackground(Color.ORANGE);
@@ -29,14 +29,13 @@ public class MainFrame extends JFrame implements ActionListener{
 		cPane = getContentPane();
 		cPane.setLayout(null);
 		
-		img = new ImageIcon("C:/Users/rldyd/Desktop/움1.gif");
+		img = new ImageIcon("src/images/움1.gif");
 		ImgBox = new JLabel(img);
 		ImgBox.setBounds(500, 80, img.getIconWidth(), img.getIconHeight());
-		ImgBox.setSize(300, 370);
-		
+		ImgBox.setSize(300, 370);				
 		cPane.add(ImgBox);
 		
-		img1 = new ImageIcon("C:/Users/rldyd/Desktop/움3.gif");
+		img1 = new ImageIcon("src/images/움3.gif");
 		ImgBox1 = new JLabel(img1);
 		ImgBox1.setBounds(20, 80, img.getIconWidth(), img1.getIconHeight());
 		ImgBox1.setSize(275, 370);
@@ -67,7 +66,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		
 		pd = new JLabel("제작 : 신의 한수");
 		pd.setBounds(650, 500, 200, 50);
-		pd.setFont(new Font("Default", Font.PLAIN, 18));
+		pd.setFont(new Font("Default", Font.BOLD, 16));
 		
 
 		con.add(gameStart);

@@ -12,6 +12,9 @@ import countDown.model.service.MainService;
 
 public class GameFrame extends JFrame implements MouseListener, Runnable {
 	private JLabel time = new JLabel();
+	private JLabel ImgBox;
+	private ImageIcon img;
+	private Container cPane;
 	private JButton start = new JButton("START");
 	private JButton reset = new JButton("Reset");
 	private JButton pause = new JButton("Pause");
@@ -32,6 +35,17 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+		Container contentPane = getContentPane();
+		contentPane.setBackground(Color.WHITE);
+		cPane = getContentPane();
+		cPane.setLayout(null);
+		
+		img = new ImageIcon("src/images/단1.gif");
+		ImgBox = new JLabel(img);
+		ImgBox.setBounds(150, 470, img.getIconWidth(), img.getIconHeight());
+		ImgBox.setSize(500, 100);
+		
+		cPane.add(ImgBox);
 
 		Container con = this.getContentPane();
 		con.setLayout(null);
