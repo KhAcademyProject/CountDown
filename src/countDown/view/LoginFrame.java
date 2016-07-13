@@ -2,7 +2,6 @@ package countDown.view;
 
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -20,6 +19,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.SoftBevelBorder;
 
 import countDown.controller.UserController;
 import countDown.model.domain.User;
@@ -89,7 +90,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 		idField = new JTextField();
 		idField.setBounds(id.getBounds().x+50, id.getBounds().y+15, 300, 40);
 		idField.setFont(new Font("Default", Font.BOLD, 25));
-
+		
 		pw = new JLabel("PW");
 		pw.setBounds(id.getBounds().x-5,id.getBounds().y+60, 100, 60);
 		pw.setFont(new Font("Default", Font.BOLD, 25));
@@ -105,7 +106,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 		loginBtn.setForeground(Color.WHITE);
 		loginBtn.setBackground( new Color(000, 000, 255));
 		
-		join = new JLabel("Hey, get the only your ID!",SwingConstants.CENTER);
+		join = new JLabel("Hey, get the your ID!",SwingConstants.CENTER);
 		join.setBounds(loginBtn.getBounds().x,
 				pwField.getBounds().y+pwField.getBounds().height+10,
 				pwField.getBounds().width,pwField.getBounds().height);

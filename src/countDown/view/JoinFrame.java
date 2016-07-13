@@ -24,7 +24,8 @@ import countDown.controller.UserController;
 public class JoinFrame extends JFrame implements ActionListener {
 
 	private Font font = new Font("Default", Font.BOLD, 20);
-	private JLabel title, id, pw, join, nickName, pd, imgBox, imgBox2, imgBox3, version;
+	private JLabel title, id, pw, join, nickName, pd;
+	private JLabel imgBox, imgBox2, imgBox3, imgBox4,version;
 	private JTextField idField, nickField;
 	private JPasswordField pwField;
 	private JButton joinBtn, cancelBtn, checkBtn ;
@@ -33,7 +34,7 @@ public class JoinFrame extends JFrame implements ActionListener {
 	private UserController userController;
 	private boolean btnChk =false;
 	boolean idChk = true;
-	private ImageIcon image,img,img2,img3;
+	private ImageIcon image,img,img2,img3,img4;
 	public JoinFrame() {}
 	
 	public void makeComponents() {
@@ -60,10 +61,11 @@ public class JoinFrame extends JFrame implements ActionListener {
 		con.add(cancelBtn);
 		con.add(checkBtn);
 		con.add(pd);
-		con.add(imgBox);
-		con.add(imgBox2);
+//		con.add(imgBox);
+//		con.add(imgBox2);
+		con.add(imgBox3);
+		con.add(imgBox4);
 		con.add(version);
-//		con.add(imgBox3);
 		
 		frame.setVisible(true);
 		start();
@@ -75,22 +77,26 @@ public class JoinFrame extends JFrame implements ActionListener {
 		
 		img = new ImageIcon("src/images/15-4.gif");
 		imgBox = new JLabel(img);
-		imgBox.setBounds(650, 350, img.getIconWidth(), img.getIconHeight());
+		imgBox.setBounds(530, 80, img.getIconWidth(), img.getIconHeight());
 		
 		img2 = new ImageIcon("src/images/lion.gif");
 		imgBox2 = new JLabel(img2);
-		imgBox2.setBounds(350, 20, img2.getIconWidth(), img2.getIconHeight());
+		imgBox2.setBounds(150, 60, img2.getIconWidth(), img2.getIconHeight());
 		
-//		img3 = new ImageIcon("src/images/lion2.gif");
-//		imgBox3 = new JLabel(img3);
-//		imgBox3.setBounds(0, 420, img3.getIconWidth(), img3.getIconHeight());
+		img3 = new ImageIcon("src/images/all.png");
+		imgBox3 = new JLabel(img3);
+		imgBox3.setBounds(245, 460, img3.getIconWidth(), img3.getIconHeight());
+		
+		img4 = new ImageIcon("src/images/lion2.gif");
+		imgBox4 = new JLabel(img4);
+		imgBox4.setBounds(500, 460, img4.getIconWidth(), img4.getIconHeight());
 
 		version = new JLabel("Ver. 1.0");
 		version.setBounds(730, 0, 300, 30);
 		version.setFont(new Font("Default", Font.BOLD, 15));
 		
 		id = new JLabel("ID");
-		id.setBounds(200, 220, 100, 60);
+		id.setBounds(200, 190, 100, 60);
 		id.setFont(new Font("Default", Font.BOLD, 25));
 		
 		idField = new JTextField();
