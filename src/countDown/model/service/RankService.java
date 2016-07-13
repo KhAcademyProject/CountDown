@@ -63,7 +63,7 @@ public class RankService {
 		
 		for(int i = 0; keyIter.hasNext(); i++){
 			String key = keyIter.next();
-			System.out.println(key);
+//			System.out.println(key);
 			value = prop.getProperty(key);
 			String[] values = value.split(",");
 			sr[i]= new User(values[0],values[1],values[2]);
@@ -72,7 +72,7 @@ public class RankService {
 		
 		list.sort(new AscRank());
 		for (int j = 0; j < sr.length; j++) {
-			System.out.println(list.get(j));
+//			System.out.println(list.get(j));
 			sb.append( j+1 + "등 : " + list.get(j).getNickName() + " "+ list.get(j).getTimeScore() + "\n");
 		}
 		return new String(sb);

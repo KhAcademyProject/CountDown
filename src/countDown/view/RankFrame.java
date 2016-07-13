@@ -51,7 +51,7 @@ public class RankFrame extends JFrame implements ActionListener{
 		toMainBtn = new JButton("메인으로 가기");
 		replayBtn = new JButton("다시하기");
 		timeLb = new JLabel(time);
-		timeLb.setFont(new Font("Default", Font.BOLD, 55));
+		timeLb.setFont(new Font("Default", Font.BOLD, 40));
 		//버튼 꾸미기
 		rankUpBtn.setBounds(200, 320, 180, 40);
 		rankUpBtn.setFont(font);
@@ -101,6 +101,7 @@ public class RankFrame extends JFrame implements ActionListener{
 			tarea.setFont(new Font("Default", Font.BOLD, 15));
 			fs.add(tarea, new BorderLayout().CENTER);
 			fs.setBounds(200, 100, 300, 400);	
+			fs.setLocationRelativeTo(null);
 			fs.addWindowListener(new WindowAdapter(){
 				public void windowClosing(WindowEvent e){
 					fs.setVisible(false);
