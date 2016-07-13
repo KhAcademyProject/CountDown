@@ -10,10 +10,12 @@ public class RankFrame extends JFrame implements ActionListener{
 
 	private JButton rankUpBtn, rankViewBtn, toMainBtn, replayBtn;
 	private JLabel timeLb;
-	private Font font = new Font("Default", Font.BOLD, 20);
+	private Font font = new Font("돋움체", Font.BOLD, 20);
 	private JTextArea tarea = new JTextArea();
-	private MainFrame frame;
+	private Container cPane;
 	private String time, gameType;
+	private JLabel ImgBox1, ImgBox2, ImgBox3, ImgBox4;
+	private ImageIcon img1, img2, img3, img4;
 	
 	public RankFrame(){
 		this.setTitle("1 TO 50 GAME");
@@ -21,6 +23,8 @@ public class RankFrame extends JFrame implements ActionListener{
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
+		
+		img(); //화면꾸미기
 		
 		this.setVisible(true);
 	}
@@ -47,13 +51,25 @@ public class RankFrame extends JFrame implements ActionListener{
 		toMainBtn = new JButton("메인으로 가기");
 		replayBtn = new JButton("다시하기");
 		timeLb = new JLabel(time);
-		timeLb.setFont(font);
+		timeLb.setFont(new Font("Default", Font.BOLD, 55));
+		//버튼 꾸미기
+		rankUpBtn.setBounds(200, 320, 180, 40);
+		rankUpBtn.setFont(font);
+		rankUpBtn.setBackground(new Color(102, 255, 153));
 		
-		rankUpBtn.setBounds(220, 320, 150, 40);
-		rankViewBtn.setBounds(400, 320, 150, 40);
-		toMainBtn.setBounds(220, 380, 150, 40);
-		replayBtn.setBounds(400, 380, 150, 40);
-		timeLb.setBounds(360, 150, 150, 40);
+		rankViewBtn.setBounds(410, 320, 180, 40);
+		rankViewBtn.setFont(font);
+		rankViewBtn.setBackground(new Color(204, 255, 153));
+		
+		toMainBtn.setBounds(200, 380, 180, 40);
+		toMainBtn.setFont(font);
+		toMainBtn.setBackground(new Color(204, 255, 102));
+		
+		replayBtn.setBounds(410, 380, 180, 40);
+		replayBtn.setFont(font);
+		replayBtn.setBackground(new Color(153, 255, 204));
+		
+		timeLb.setBounds(310, 170, 200, 50);
 		
 		con.add(rankUpBtn);
 		con.add(rankViewBtn);
@@ -78,7 +94,7 @@ public class RankFrame extends JFrame implements ActionListener{
 		case "랭킹 보기": 
 			//랭킹 보는 메소드 실행 
 			Frame fs = new Frame("랭킹 확인");
-			System.out.println();
+//			System.out.println();
 			
 			tarea.setText((new RankService().readUserRank()));
 			tarea.setEditable(false);
@@ -101,7 +117,7 @@ public class RankFrame extends JFrame implements ActionListener{
 //			System.out.println("메인");	
 			break;	
 		case "다시하기":
-			System.out.println(gameType +"--------");
+//			System.out.println(gameType +"--------");
 			if (gameType.equals("game"))
 				new GameFrame();
 			else if (gameType.equals("reverse"))
@@ -113,8 +129,39 @@ public class RankFrame extends JFrame implements ActionListener{
 		
 	}
 	
-	public static void main(String[] args){
-		new RankFrame().rankInit("1:00:00", "reverse");;
+	public void img(){
+		Container contentPane = getContentPane();
+		contentPane.setBackground(Color.PINK);
+//		cPane = getContentPane();
+		contentPane.setLayout(null);
+		
+		img1 = new ImageIcon("src/images/rank1.gif");
+		ImgBox1 = new JLabel(img1);
+		ImgBox1.setBounds(25, 80, img1.getIconWidth(), img1.getIconHeight());
+		ImgBox1.setSize(300, 200);
+		contentPane.add(ImgBox1);
+		
+		img2 = new ImageIcon("src/images/rank2.gif");
+		ImgBox2 = new JLabel(img2);
+		ImgBox2.setBounds(470, 80, img2.getIconWidth(), img2.getIconHeight());
+		ImgBox2.setSize(300, 200);
+		contentPane.add(ImgBox2);
+		
+		img3 = new ImageIcon("src/images/together.png");
+		ImgBox3 = new JLabel(img3);
+		ImgBox3.setBounds(428, 372, img3.getIconWidth(), img3.getIconHeight());
+		ImgBox3.setSize(500, 200);
+		contentPane.add(ImgBox3);
+		
+		img4 = new ImageIcon("src/images/duck.png");
+		ImgBox4 = new JLabel(img4);
+		ImgBox4.setBounds(0, 372, img4.getIconWidth(), img4.getIconHeight());
+		ImgBox4.setSize(300, 200);
+		contentPane.add(ImgBox4);
 	}
+	
+/*	public static void main(String[] args){
+		new RankFrame().rankInit("1:00:00", "reverse");;
+	}*/
 
 }
