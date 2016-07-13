@@ -12,8 +12,8 @@ import countDown.model.service.MainService;
 
 public class GameFrame extends JFrame implements MouseListener, Runnable {
 	private JLabel time = new JLabel();
-	private JLabel ImgBox,pauseImgBox;
-	private ImageIcon img,pauseImg;
+	private JLabel ImgBox,pauseImgBox,pauseImgBox2;
+	private ImageIcon img,pauseImg,pauseImg2;
 	private Container cPane;
 	private JButton start = new JButton("START");
 	private JButton reset = new JButton("Reset");
@@ -39,6 +39,12 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 
 		Container con = this.getContentPane();
 		con.setLayout(null);
+		
+		pauseImgBox = new JLabel("");
+		con.add(pauseImgBox);
+		
+		pauseImgBox2 = new JLabel("");
+		con.add(pauseImgBox2);
 		
 		
 		time.setBounds(520, 150, 150, 30);
@@ -71,17 +77,12 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 		cPane.setLayout(null);
 		
 		
-		
 		img = new ImageIcon("src/images/단체.jpg");
 		ImgBox = new JLabel(img);
 		ImgBox.setBounds(90, 380, img.getIconWidth(), img.getIconHeight());
 		ImgBox.setSize(600, 300);
 		
 		cPane.add(ImgBox);
-		
-		pauseImgBox = new JLabel("");
-		con.add(pauseImgBox);
-		
 		start();
 		setVisible(true);
 	}
@@ -165,15 +166,22 @@ public void TimeCheck() {
 			else if(e.getSource() == pause){
 			
 				if(on == 0)	{	
-					pauseImg = new ImageIcon("src/images/pause.png");
-					pauseImgBox.setBounds(100, 100, pauseImg.getIconWidth(), pauseImg.getIconHeight());
+					pauseImg = new ImageIcon("src/images/001.gif");
+					pauseImgBox.setBounds(40, 40, pauseImg.getIconWidth(), pauseImg.getIconHeight());
 					pauseImg.getImage().flush();
 					pauseImgBox.setIcon(pauseImg);
+					
+					pauseImg2 = new ImageIcon("src/images/yellow.png");
+					pauseImgBox2.setBounds(75, 75, 395, 392);
+					pauseImg2.getImage().flush();
+					pauseImgBox2.setIcon(pauseImg2);
 					on = 1;
 					th.suspend();
 				}else  if(on == 1){ 
 						pauseImg = new ImageIcon("");
 						pauseImgBox.setIcon(pauseImg);
+						pauseImg2 = new ImageIcon("");
+						pauseImgBox2.setIcon(pauseImg2);
 						on = 0;
 						th.resume();
 					}
