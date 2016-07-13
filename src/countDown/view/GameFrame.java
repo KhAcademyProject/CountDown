@@ -12,8 +12,8 @@ import countDown.model.service.MainService;
 
 public class GameFrame extends JFrame implements MouseListener, Runnable {
 	private JLabel time = new JLabel();
-	private JLabel ImgBox;
-	private ImageIcon img;
+	private JLabel ImgBox,pauseImgBox;
+	private ImageIcon img,pauseImg;
 	private Container cPane;
 	private JButton start = new JButton("START");
 	private JButton reset = new JButton("Reset");
@@ -39,6 +39,8 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 
 		Container con = this.getContentPane();
 		con.setLayout(null);
+		
+		
 		time.setBounds(520, 150, 150, 30);
 		time.setFont(new Font("Default", Font.BOLD, 30));
 		con.add(time);
@@ -68,12 +70,17 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 		cPane = getContentPane();
 		cPane.setLayout(null);
 		
+		
+		
 		img = new ImageIcon("src/images/단체.jpg");
 		ImgBox = new JLabel(img);
 		ImgBox.setBounds(90, 380, img.getIconWidth(), img.getIconHeight());
 		ImgBox.setSize(600, 300);
 		
 		cPane.add(ImgBox);
+		
+		pauseImgBox = new JLabel("");
+		con.add(pauseImgBox);
 		
 		start();
 		setVisible(true);
@@ -157,10 +164,16 @@ public void TimeCheck() {
 				// 일시정지
 			else if(e.getSource() == pause){
 			
-				if(on == 0)	{	 
+				if(on == 0)	{	
+					pauseImg = new ImageIcon("src/images/pause.png");
+					pauseImgBox.setBounds(100, 100, pauseImg.getIconWidth(), pauseImg.getIconHeight());
+					pauseImg.getImage().flush();
+					pauseImgBox.setIcon(pauseImg);
 					on = 1;
 					th.suspend();
 				}else  if(on == 1){ 
+						pauseImg = new ImageIcon("");
+						pauseImgBox.setIcon(pauseImg);
 						on = 0;
 						th.resume();
 					}
