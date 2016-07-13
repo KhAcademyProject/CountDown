@@ -96,9 +96,11 @@ public class MainFrame extends JFrame implements ActionListener{
 			switch(e.getActionCommand()){
 			case "Game START":
 				new GameFrame();
+				this.dispose();
 				break;
 			case "Reverse mode":
 				new ReverseGameFrame();
+				this.dispose();
 				break;	
 			}	
 
