@@ -31,19 +31,19 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 	
 	GameFrame() {
 		super("1 TO 50 GAME"); 	//제목
-		this.setBounds(new Rectangle(500, 300, 800, 600)); 		// 화면크기
+		this.setBounds(new Rectangle(500, 300, 800, 700)); 		// 화면크기
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 		Container contentPane = getContentPane();
-		contentPane.setBackground(Color.WHITE);
+		contentPane.setBackground(Color.YELLOW);
 		cPane = getContentPane();
 		cPane.setLayout(null);
 		
-		img = new ImageIcon("src/images/단1.gif");
+		img = new ImageIcon("src/images/크기변환_단단.jpg");
 		ImgBox = new JLabel(img);
-		ImgBox.setBounds(150, 470, img.getIconWidth(), img.getIconHeight());
-		ImgBox.setSize(500, 100);
+		ImgBox.setBounds(90, 450, img.getIconWidth(), img.getIconHeight());
+		ImgBox.setSize(600, 300);
 		
 		cPane.add(ImgBox);
 
