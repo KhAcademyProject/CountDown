@@ -35,17 +35,7 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
-		Container contentPane = getContentPane();
-		contentPane.setBackground(Color.YELLOW);
-		cPane = getContentPane();
-		cPane.setLayout(null);
-		
-		img = new ImageIcon("src/images/크기변환_단단.jpg");
-		ImgBox = new JLabel(img);
-		ImgBox.setBounds(90, 450, img.getIconWidth(), img.getIconHeight());
-		ImgBox.setSize(600, 300);
-		
-		cPane.add(ImgBox);
+
 
 		Container con = this.getContentPane();
 		con.setLayout(null);
@@ -72,6 +62,19 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 		ms = new MainService();
 		ms.setBounds(70, 70, 640, 400);
 		con.add(ms);
+		
+		Container contentPane = getContentPane();
+		contentPane.setBackground(new Color(250, 235, 30));
+		cPane = getContentPane();
+		cPane.setLayout(null);
+		
+		img = new ImageIcon("src/images/단체.jpg");
+		ImgBox = new JLabel(img);
+		ImgBox.setBounds(90, 380, img.getIconWidth(), img.getIconHeight());
+		ImgBox.setSize(600, 300);
+		
+		cPane.add(ImgBox);
+		
 		start();
 		setVisible(true);
 	}

@@ -9,6 +9,9 @@ import countDown.model.service.ReverseMainService;
 
 public class ReverseGameFrame extends JFrame implements MouseListener, Runnable  {
 	private JLabel time = new JLabel();
+	private JLabel ImgBox;
+	private ImageIcon img;
+	private Container cPane;
 	private JButton start = new JButton("START");
 	private JButton reset = new JButton("Reset");
 	private JButton pause = new JButton("Pause");
@@ -24,7 +27,7 @@ public class ReverseGameFrame extends JFrame implements MouseListener, Runnable 
 	
 	ReverseGameFrame() {
 		super("1 TO 50 GAME"); 	//제목
-		this.setBounds(new Rectangle(500, 300, 800, 600)); 		// 화면크기
+		this.setBounds(new Rectangle(500, 300, 800, 700)); 		// 화면크기
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
@@ -54,6 +57,18 @@ public class ReverseGameFrame extends JFrame implements MouseListener, Runnable 
 		ms = new ReverseMainService();
 		ms.setBounds(70, 70, 640, 400);
 		con.add(ms);
+		
+		Container contentPane = getContentPane();
+		contentPane.setBackground(new Color(250, 235, 30));
+		cPane = getContentPane();
+		cPane.setLayout(null);
+		
+		img = new ImageIcon("src/images/단체.jpg");
+		ImgBox = new JLabel(img);
+		ImgBox.setBounds(90, 380, img.getIconWidth(), img.getIconHeight());
+		ImgBox.setSize(600, 300);
+		
+		cPane.add(ImgBox);
 		start();
 		setVisible(true);
 	}
