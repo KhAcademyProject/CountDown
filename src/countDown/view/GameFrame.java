@@ -37,7 +37,6 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 
-
 		Container con = this.getContentPane();
 		con.setLayout(null);
 		
@@ -48,24 +47,29 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 		con.add(pauseImgBox2);
 		
 		
-		time.setBounds(520, 150, 150, 30);
+		time.setBounds(520, 100, 150, 30);
 		time.setFont(new Font("Default", Font.BOLD, 30));
 		con.add(time);
 		// 프레임에표시할텍스트라벨
-		pause.setBounds(510, 320, 150, 50);
+		pause.setBounds(510, 260, 150, 50);
 		pause.setFont(new Font("Default", Font.BOLD, 25));
 		pause.setBackground(new Color(204,204,255));	
 		con.add(pause);
 		
-		reset.setBounds(510, 380, 150, 50);
+		reset.setBounds(510, 320, 150, 50);
 		reset.setFont(new Font("Default", Font.BOLD, 25));
 		reset.setBackground(new Color(0,153,51));
 		con.add(reset);
 		
-		start.setBounds(510, 260, 150, 50);
+		start.setBounds(510, 200, 150, 50);
 		start.setFont(new Font("Default", Font.BOLD, 25));
 		start.setBackground(new Color(255,155,000));
 		con.add(start);
+		
+		Back.setBounds(510, 380, 150, 50);
+		Back.setFont(new Font("Default", Font.BOLD, 25));
+		Back.setBackground(new Color(50,150,250));
+		con.add(Back);
 		
 		//게임화면 크기
 		ms = new MainService();
@@ -99,6 +103,8 @@ public void start() {
 	reset.addMouseListener(this);
 	// reset 버튼에마우스동작활성화
 	pause.addMouseListener(this);
+	
+	Back.addMouseListener(this);
 	
 	th = new Thread(this);
 	th.start();
@@ -185,9 +191,19 @@ public void TimeCheck() {
 						pauseImgBox2.setIcon(pauseImg2);
 						on = 0;
 						th.resume();
-					}
+					}	
+			
+				}
+			//뒤로가기
+			else if(e.getSource() == Back){
+
+				new MainFrame();
+				this.dispose();
+				}
+			
+			
 			}
-			}
+			
 		
 		public String getTimeText(){
 			return time.getText();

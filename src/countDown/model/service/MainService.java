@@ -117,21 +117,13 @@ public class MainService extends JPanel implements MouseListener {
 			// 마우스로선택된사각박스를붉게표시
 			
 			g.setColor(Color.black);
-			g.drawString("다음숫자 : "+ this.getCheck(), 430, 150);
+			g.drawString("다음숫자 : "+ this.getCheck(), 430, 100);
 			g.setFont(new Font("Default", Font.BOLD, 20));
 		
 		}
 		if (check > 50) {
 			String gameType = "game";
 			new RankFrame().rankInit(time,gameType);
-			
-			/*g.setColor(Color.blue);
-			g.setFont(new Font("Default", Font.BOLD, 50));
-			g.drawString("GAME CLEAR!", 40, 150);
-			g.setColor(Color.red);
-			g.setFont(new Font("Default", Font.BOLD, 40));
-			g.drawString("" + time, 90, 250);*/
-			// 게임이클리어되면클리어화면표시
 		}
 
 	}

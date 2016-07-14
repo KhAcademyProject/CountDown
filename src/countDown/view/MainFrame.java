@@ -11,11 +11,13 @@ public class MainFrame extends JFrame implements ActionListener{
 
 	private JButton gameStart;
 	private JButton Reverse;
+	private JButton Back = new JButton();
 	private Font font = new Font("Default", Font.BOLD, 20);
 	private JLabel title, version, pd, ImgBox, ImgBox1;
 	private Container cPane;
 	private ImageIcon img, img1;
 	
+	LoginFrame LF = new LoginFrame();
 	public MainFrame(){
 		super("1 TO 50 GAME"); 	//제목
 		this.setBounds(new Rectangle(560, 215, 800, 600)); 		// 화면크기
@@ -57,6 +59,11 @@ public class MainFrame extends JFrame implements ActionListener{
 		Reverse.setBackground(Color.orange);
 		Reverse.setFont(font);
 		
+		Back = new JButton("Back");
+		Back.setBounds(300, 450, 180, 50);
+		Back.setBackground(Color.ORANGE);
+		Back.setFont(font);
+		
 		title = new JLabel("1 to 50");
 		title.setBounds(330, 100, 300, 50);
 		title.setFont(new Font("Default", Font.BOLD, 50));
@@ -75,7 +82,7 @@ public class MainFrame extends JFrame implements ActionListener{
 		con.add(title);
 		con.add(version);
 		con.add(pd);
-
+		con.add(Back);
 		
 		start();
 
@@ -89,6 +96,7 @@ public class MainFrame extends JFrame implements ActionListener{
 			
 			gameStart.addActionListener(this);
 			Reverse.addActionListener(this);
+			Back.addActionListener(this);
 		}
 
 		@Override
@@ -101,7 +109,11 @@ public class MainFrame extends JFrame implements ActionListener{
 			case "Reverse mode":
 				new ReverseGameFrame();
 				this.dispose();
-				break;	
+				break;
+			case "Back":
+				LF.makeFrame();;
+				this.dispose();
+				break;
 			}	
 
 		}

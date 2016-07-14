@@ -46,7 +46,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 		frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // 닫기
 		frame.setResizable(false);
 		frame.setLocationRelativeTo(null);	
-		makeComponents();	// 구성요소 추가	
+		makeComponents();	// 구성요소 추가
 		frame.setVisible(true);
 	}
 
