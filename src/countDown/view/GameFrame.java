@@ -17,14 +17,16 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 	private Container cPane;
 	private JButton start = new JButton("START");
 	private JButton reset = new JButton("Reset");
-	private JButton pause = new JButton("Pause");
+	private JButton pause = new JButton();
 	private JButton Back = new JButton("Back");
 	private JLabel graphic = new JLabel();
 	private int on = 0;
 	
+	
 	SimpleDateFormat time_format;
 	String show_time;
-//	SimpleDateFormat num;
+
+	
 	long start_time, current_time, actual_time;
 	boolean time_run = false;
 	Thread th;
@@ -51,6 +53,8 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 		time.setFont(new Font("Default", Font.BOLD, 30));
 		con.add(time);
 		// 프레임에표시할텍스트라벨
+//		Back = new JButton("Back");
+		pause = new JButton("pause");
 		pause.setBounds(510, 260, 150, 50);
 		pause.setFont(new Font("Default", Font.BOLD, 25));
 		pause.setBackground(new Color(204,204,255));	
@@ -182,6 +186,7 @@ public void TimeCheck() {
 					pauseImg2.getImage().flush();
 					pauseImgBox2.setIcon(pauseImg2);
 					on = 1;
+					pause.setText("ReSTART");
 					th.suspend();
 				}else  if(on == 1){ 
 						pauseImg = new ImageIcon("");
@@ -189,6 +194,7 @@ public void TimeCheck() {
 						pauseImg2 = new ImageIcon("");
 						pauseImgBox2.setIcon(pauseImg2);
 						on = 0;
+						pause.setText("pause");
 						th.resume();
 					}	
 			

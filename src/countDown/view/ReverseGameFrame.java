@@ -176,6 +176,7 @@ public void TimeCheck() {
 					pauseImg2.getImage().flush();
 					pauseImgBox2.setIcon(pauseImg2);
 					on = 1;
+					pause.setText("ReSTART");
 					th.suspend();
 				}else  if(on == 1){ 
 						pauseImg = new ImageIcon("");
@@ -183,6 +184,7 @@ public void TimeCheck() {
 						pauseImg2 = new ImageIcon("");
 						pauseImgBox2.setIcon(pauseImg2);
 						on = 0;
+						pause.setText("pause");
 						th.resume();
 					}
 			}
