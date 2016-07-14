@@ -114,14 +114,6 @@ public class ReverseMainService extends JPanel implements MouseListener {
 			if (check < 1) {
 				String gameType = "reverse";
 				new RankFrame().rankInit(time,gameType);
-				
-				/*g.setColor(Color.blue);
-				g.setFont(new Font("Default", Font.BOLD, 50));
-				g.drawString("GAME CLEAR!", 40, 150);
-				g.setColor(Color.red);
-				g.setFont(new Font("Default", Font.BOLD, 40));
-				g.drawString("" + time, 90, 250);*/
-				// 게임이클리어되면클리어화면표시
 			}
 		}
 
