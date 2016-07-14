@@ -9,12 +9,13 @@ import countDown.model.service.ReverseMainService;
 
 public class ReverseGameFrame extends JFrame implements MouseListener, Runnable  {
 	private JLabel time = new JLabel();
-	private JLabel ImgBox;
-	private ImageIcon img;
+	private JLabel ImgBox,pauseImgBox,pauseImgBox2;
+	private ImageIcon img,pauseImg,pauseImg2;
 	private Container cPane;
 	private JButton start = new JButton("START");
 	private JButton reset = new JButton("Reset");
 	private JButton pause = new JButton("Pause");
+	private JButton Back = new JButton("Back");
 	private JLabel graphic = new JLabel();
 	private int on = 0;
 
@@ -26,7 +27,7 @@ public class ReverseGameFrame extends JFrame implements MouseListener, Runnable 
 	ReverseMainService ms;
 	
 	ReverseGameFrame() {
-		super("1 TO 50 GAME"); 	//제목
+		super("1 TO 50 GAME - Reverse mode"); 	//제목
 		this.setBounds(new Rectangle(500, 300, 800, 700)); 		// 화면크기
 		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); 		//닫기
 		this.setResizable(false);
@@ -34,24 +35,36 @@ public class ReverseGameFrame extends JFrame implements MouseListener, Runnable 
 		
 		Container con = this.getContentPane();
 		con.setLayout(null);
-		time.setBounds(520, 150, 150, 30);
+		
+		pauseImgBox = new JLabel("");
+		con.add(pauseImgBox);
+		
+		pauseImgBox2 = new JLabel("");
+		con.add(pauseImgBox2);
+		
+		time.setBounds(520, 100, 150, 30);
 		time.setFont(new Font("Default", Font.BOLD, 30));
 		con.add(time);
 		// 프레임에표시할텍스트라벨
-		pause.setBounds(510, 320, 150, 50);
+		pause.setBounds(510, 260, 150, 50);
 		pause.setFont(new Font("Default", Font.BOLD, 25));
 		pause.setBackground(new Color(204,204,255));
 		con.add(pause);
 		
-		reset.setBounds(510, 380, 150, 50);
+		reset.setBounds(510, 320, 150, 50);
 		reset.setFont(new Font("Default", Font.BOLD, 25));
 		reset.setBackground(new Color(0,153,51));
 		con.add(reset);
 		
-		start.setBounds(510, 260, 150, 50);
+		start.setBounds(510, 200, 150, 50);
 		start.setFont(new Font("Default", Font.BOLD, 25));
 		start.setBackground(new Color(255,155,000));
 		con.add(start);
+		
+		Back.setBounds(510, 380, 150, 50);
+		Back.setFont(new Font("Default", Font.BOLD, 25));
+		Back.setBackground(new Color(50,150,250));
+		con.add(Back);
 		
 		//게임화면 크기
 		ms = new ReverseMainService();
@@ -84,6 +97,7 @@ public void start() {
 	reset.addMouseListener(this);
 	// reset 버튼에마우스동작활성화
 	pause.addMouseListener(this);
+	Back.addMouseListener(this);
 	
 	th = new Thread(this);
 	th.start();
@@ -151,14 +165,33 @@ public void TimeCheck() {
 			// 일시정지
 			else if(e.getSource() == pause){
 			
-				if(on == 0)	{	 
+				if(on == 0)	{	
+					pauseImg = new ImageIcon("src/images/001.gif");
+					pauseImgBox.setBounds(40, 40, pauseImg.getIconWidth(), pauseImg.getIconHeight());
+					pauseImg.getImage().flush();
+					pauseImgBox.setIcon(pauseImg);
+					
+					pauseImg2 = new ImageIcon("src/images/yellow.png");
+					pauseImgBox2.setBounds(75, 75, 395, 392);
+					pauseImg2.getImage().flush();
+					pauseImgBox2.setIcon(pauseImg2);
 					on = 1;
 					th.suspend();
 				}else  if(on == 1){ 
+						pauseImg = new ImageIcon("");
+						pauseImgBox.setIcon(pauseImg);
+						pauseImg2 = new ImageIcon("");
+						pauseImgBox2.setIcon(pauseImg2);
 						on = 0;
 						th.resume();
 					}
 			}
+			//뒤로가기
+			else if(e.getSource() == Back){
+
+				new MainFrame();
+				this.dispose();
+				}
 			}
 		
 		

@@ -108,7 +108,7 @@ public class ReverseMainService extends JPanel implements MouseListener {
 				// 마우스로선택된사각박스를붉게표시
 				
 				g.setColor(Color.black);
-				g.drawString("다음숫자 : "+ this.getCheck(), 430, 150);
+				g.drawString("다음숫자 : "+ this.getCheck(), 430, 100);
 				g.setFont(new Font("Default", Font.BOLD, 20));
 			}
 			if (check < 1) {

@@ -24,7 +24,7 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 	
 	SimpleDateFormat time_format;
 	String show_time;
-	SimpleDateFormat num;
+//	SimpleDateFormat num;
 	long start_time, current_time, actual_time;
 	boolean time_run = false;
 	Thread th;
@@ -103,7 +103,6 @@ public void start() {
 	reset.addMouseListener(this);
 	// reset 버튼에마우스동작활성화
 	pause.addMouseListener(this);
-	
 	Back.addMouseListener(this);
 	
 	th = new Thread(this);
