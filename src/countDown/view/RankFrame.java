@@ -13,7 +13,7 @@ public class RankFrame extends JFrame implements ActionListener{
 	private JLabel timeLb;
 	private Font font = new Font("돋움체", Font.BOLD, 20);
 	private JTextArea tarea = new JTextArea();
-	//private Container cPane;
+	private JScrollPane scrollBar;
 	private String time, gameType;
 	private JLabel ImgBox1, ImgBox2, ImgBox3, ImgBox4;
 	private ImageIcon img1, img2, img3, img4;
@@ -110,13 +110,16 @@ public class RankFrame extends JFrame implements ActionListener{
 		case "랭킹 보기": 
 			//랭킹 보는 메소드 실행 
 			Frame fs = new Frame("랭킹 확인");
+//			Container contentPane = getContentPane();
 //			System.out.println();
 			
 			tarea.setText((new RankService().readUserRank(gameType)));
 			tarea.setEditable(false);
 			tarea.setFont(new Font("Default", Font.BOLD, 15));
-			fs.add(tarea, new BorderLayout().CENTER);
-			fs.setBounds(200, 100, 300, 700);	
+			scrollBar = new JScrollPane(tarea);
+			fs.add(scrollBar);
+//			fs.add(tarea, new BorderLayout().CENTER);
+			fs.setBounds(200, 100, 350, 500);	
 			fs.setLocationRelativeTo(null);
 			fs.addWindowListener(new WindowAdapter(){
 				public void windowClosing(WindowEvent e){
@@ -183,7 +186,7 @@ public class RankFrame extends JFrame implements ActionListener{
 	}
 	
 /*	public static void main(String[] args){
-		new RankFrame().rankInit("1:00:00", "reverse");;
+		new RankFrame().rankInit("1:00:00", "game");;
 	}*/
 
 }
