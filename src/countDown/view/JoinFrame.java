@@ -200,7 +200,7 @@ public class JoinFrame extends JFrame implements ActionListener {
 						if(userController.addMember(map)){
 							JOptionPane.showMessageDialog(this, "저장되었습니다","알림창",JOptionPane.INFORMATION_MESSAGE);
 							frame.dispose();
-							new LoginFrame();
+							new LoginFrame().makeFrame();
 						}
 						else
 							JOptionPane.showMessageDialog(this, "저장에 실패하였습니다","알림창",JOptionPane.WARNING_MESSAGE);
