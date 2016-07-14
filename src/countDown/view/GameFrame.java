@@ -18,6 +18,7 @@ public class GameFrame extends JFrame implements MouseListener, Runnable {
 	private JButton start = new JButton("START");
 	private JButton reset = new JButton("Reset");
 	private JButton pause = new JButton("Pause");
+	private JButton Back = new JButton("Back");
 	private JLabel graphic = new JLabel();
 	private int on = 0;
 	
